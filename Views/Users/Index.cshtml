@@ -1,0 +1,43 @@
+﻿@model IEnumerable<User>
+@{
+    ViewData["Title"] = "List of Users";
+    int count = 1;
+}
+<div class="card">
+    <div class="card-header">@ViewData["Title"]</div>
+    <div class="card-body">
+        <a asp-action="Create" class="btn btn-primary mb-3">Create New</a>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>IP Address</th>
+                        <th>Branch</th>
+                        <th>Action(s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.IPAddress</td>
+                            <td>@item.Branch</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-Id="@item.Id" class="btn btn-info">Edit</a>
+                                | <a asp-action="Details" asp-route-Id="@item.Id" class="btn btn-primary">Details</a>
+                                | <a asp-action="Disabled" asp-route-Id="@item.Id" class="btn btn-danger">Disable</a>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

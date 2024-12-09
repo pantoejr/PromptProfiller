@@ -1,0 +1,29 @@
+﻿@model Role
+@{
+    ViewData["Title"] = "Create Role";
+}
+<div class="card">
+    <div class="card-header">
+        <b>@ViewData["Title"]</b>
+    </div>
+    <div class="card-body">
+        <form method="post" asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Name" class="form-label">Name</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <button class="btn btn-primary w-100">Create</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <a asp-action="Index" asp-controller="Roles" class="btn btn-light tex-black w-100">Back</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

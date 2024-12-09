@@ -1,0 +1,44 @@
+﻿@model IEnumerable<AppUser>
+@{
+    ViewData["Title"] = "List of App User";
+    int count = 1;
+}
+<div class="card">
+    <div class="card-header">
+        @ViewData["Title"]
+    </div>
+    <div class="card-body">
+        <a class="btn btn-primary text-white mb-3" asp-action="Create">Create New</a>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Is Active</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.Email</td>
+                            <td>@item.IsActive</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-Id="@item.Id" class="btn btn-primary text-white">Edit</a> |
+                                <a asp-action="Details" asp-route-Id="@item.Id" class="btn btn-info text-white">Details</a> |
+                                <a asp-action="Delete" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

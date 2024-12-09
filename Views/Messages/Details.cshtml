@@ -1,0 +1,60 @@
+﻿@model MessageViewModel
+@{
+    ViewData["Title"] = "Message Details";
+    //var imagePath =
+}
+<div class="card">
+    <div class="card-header">
+        @ViewData["Title"]
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="ImagePath" class="form-label">Image</label>
+                <img src="@Model.ImagePath"  class="card-img"/>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ImagePath" class="form-label">Title</label>
+                            <input type="file" value="@Model.ImagePath" asp-for="ImagePath" class="form-control mb-3" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="UserFullName" class="form-label">User</label>
+                            <input type="hidden" asp-for="UserID" />
+                            <input asp-for="UserFullName" disabled class="form-control mb-3" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="DisplayTime" class="form-label">Display Time</label>
+                            <select class="form-control" disabled asp-for="DisplayTime">
+                                <option value="1">1 Minute</option>
+                                <option value="2">2 Minute(s)</option>
+                                <option value="3">3 Minute(s)</option>
+                                <option value="4">4 Minute(s)</option>
+                                <option value="5">5 Minute(s)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <a asp-action="Edit" asp-route-Id="@Model.Id" class="btn btn-primary w-100">Edit Message</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <a asp-action="Index" asp-controller="Messages" class="btn btn-light tex-black w-100">Back</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>        
+    </div>
+</div>

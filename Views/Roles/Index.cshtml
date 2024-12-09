@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Role>
+@{
+    ViewData["Title"] = "List of Roles";
+    int count = 1;
+}
+<div class="card">
+    <div class="card-header shadow-none">@ViewData["Title"]</div>
+    <div class="card-body">
+        <a class="btn btn-primary mb-3" asp-action="Create" asp-controller="Roles">Create New</a>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Action(s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Name</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-Id="@item.Id" class="btn btn-info">Edit</a> | <a asp-action="Delete" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

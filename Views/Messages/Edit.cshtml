@@ -1,0 +1,58 @@
+﻿@model MessageViewModel
+@{
+    ViewData["Title"] = "Edit Message";
+}
+<div class="card">
+    <div class="card-header">@ViewData["Title"]</div>
+    <div class="card-body">
+        <form method="post" asp-action="Edit" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Title" class="form-label">Title</label>
+                        <input asp-for="Title" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ImagePath" class="form-label">Title</label>
+                        <input type="file" value="@Model.ImagePath" asp-for="ImagePath" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="UserFullName" class="form-label">User</label>
+                        <input type="hidden" asp-for="UserID" />
+                        <input asp-for="UserFullName" readonly class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="DisplayTime" class="form-label">Display Time</label>
+                        <select class="form-control" asp-for="DisplayTime">
+                            <option value="1">1 Minute</option>
+                            <option value="2">2 Minute(s)</option>
+                            <option value="3">3 Minute(s)</option>
+                            <option value="4">4 Minute(s)</option>
+                            <option value="5">5 Minute(s)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <button class="btn btn-primary w-100">Update Message</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <a asp-action="Index" asp-controller="Messages" class="btn btn-light tex-black w-100">Back</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

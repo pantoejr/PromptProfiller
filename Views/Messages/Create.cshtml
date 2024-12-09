@@ -1,0 +1,80 @@
+﻿@model MessageViewModel
+@{
+    ViewData["Title"] = "Create Message";
+}
+<div class="card">
+    <div class="card-header">@ViewData["Title"]</div>
+    <div class="card-body">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Title" class="form-label">Title</label>
+                        <input asp-for="Title" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ImagePath" class="form-label">Image</label>
+                        @* <input type="file" accept=".jpg,.png" name="imageFile" asp-for="ImagePath" class="form-control" /> *@
+                        <input type="file" accept=".jpg,.png,image/jpeg,image/png" name="imageFile" asp-for="ImagePath" id="imageFile" class="form-control" onchange="validateFileType()" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="DisplayTime" class="form-label">Display Time</label>
+                        <select class="form-control" asp-for="DisplayTime">
+                            <option value="1">1 Minute</option>
+                            <option value="2">2 Minute(s)</option>
+                            <option value="3">3 Minute(s)</option>
+                            <option value="4">4 Minute(s)</option>
+                            <option value="5">5 Minute(s)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="form-label">Users</label>
+                @foreach (var item in (List<User>)ViewBag.UserList)
+                {
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="user_@item.Id" name="selectedUsers" value="@item.Id">
+                                <label class="form-check-label" for="user_@item.Id">@item.FirstName @item.LastName</label>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <button class="btn btn-primary w-100">Send Message</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <a asp-action="Index" asp-controller="Messages" class="btn btn-light tex-black w-100">Back</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    function validateFileType() {
+        var fileInput = document.getElementById('imageFile');
+        var filePath = fileInput.value;
+
+        var allowedExtensions = /(\.jpg|\.png)$/i;
+
+        if (!allowedExtensions.exec(filePath)) {
+            alert('Please upload a file with .jpg or .png extension');
+            fileInput.value = '';
+            return false;
+        }
+    }
+</script>

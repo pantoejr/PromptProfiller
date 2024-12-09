@@ -1,0 +1,55 @@
+﻿@model AppUser
+@{
+    ViewData["Title"] = "Edit AppUser";
+}
+<div class="card">
+    <div class="card-header">@ViewData["Title"]</div>
+    <div class="card-body">
+        <form asp-action="Edit" method="post">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" asp-for="FirstName">First Name</label>
+                        <input asp-for="FirstName" required class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" asp-for="LastName">Last Name</label>
+                        <input asp-for="LastName" required class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" asp-for="Email">Email</label>
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" asp-for="Username">Username</label>
+                        <input asp-for="Username" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Password" class="form-label">Password</label>
+                        <input asp-for="Password" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <button class="btn btn-primary text-white w-100">Update</button>
+                </div>
+                <div class="col-md-6">
+                    <a asp-action="Index" class="btn btn-light text-dark w-100">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
